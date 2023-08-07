@@ -1,0 +1,30 @@
+{
+  "name": "w3-format-w3i-js",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "kaitai-struct": "0.10.0"
+  },
+  "devDependencies": {
+    "wget-improved-2": "3.3.0",
+    "sh": "0.0.3"
+  },
+  "scripts": {
+    "build": "tsc --declaration && cp -r ./src/kaitai ./dist/src/kaitai && cp -r ./src/kaitai-struct ./dist/src/kaitai-struct",
+    "generate-kaitai-full": "npm run download-w3i && npm run download-w3char && npm run download-w3id && npm run download-w3str && npm run generate-kaitai",
+    "generate-kaitai": "kaitai-struct-compiler \"w3-w3i.ksy\" -t javascript -d ./generated-sources/kaitai",
+    "download-w3i": "npx nwget https://raw.githubusercontent.com/WaterKnight/Warcraft3-Formats-KaitaiStruct/main/w3-w3i.ksy -O w3-w3i.ksy",
+    "download-w3char": "npx nwget https://raw.githubusercontent.com/WaterKnight/Warcraft3-Formats-KaitaiStruct/main/w3char.ksy -O w3char.ksy",
+    "download-w3id": "npx nwget https://raw.githubusercontent.com/WaterKnight/Warcraft3-Formats-KaitaiStruct/main/w3id.ksy -O w3id.ksy",
+    "download-w3str": "npx nwget https://raw.githubusercontent.com/WaterKnight/Warcraft3-Formats-KaitaiStruct/main/w3str.ksy -O w3str.ksy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "commonjs",
+  "author": "",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "exports": {
+    "./dist": "./dist/index.js"
+  },
+  "typings": "./dist/index.d.ts"
+}
